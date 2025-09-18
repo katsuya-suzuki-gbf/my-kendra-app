@@ -42,7 +42,7 @@ function App() {
 
   // C# APIのベースURL（ご自身の環境に合わせてください）
   // const API_BASE_URL = 'https://localhost:7283';
-  const API_BASE_URL = 'https://cjdmuzpmsd.ap-northeast-1.awsapprunner.com/';
+  const API_BASE_URL = 'https://cjdmuzpmsd.ap-northeast-1.awsapprunner.com';
 
   const [showBackToTop, setShowBackToTop] = useState(false);
 
