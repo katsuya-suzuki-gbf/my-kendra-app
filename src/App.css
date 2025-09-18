@@ -1,0 +1,163 @@
+body {
+  font-family: sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  margin: 0;
+  padding: 2rem;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+  color: #1a237e;
+}
+
+.search-form {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.search-input {
+  flex-grow: 2;
+}
+
+.user-input {
+  flex-grow: 1;
+}
+
+input[type="text"] {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  background-color: #3949ab;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+}
+
+button:disabled {
+  background-color: #9fa8da;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #283593;
+}
+
+.error-message {
+  color: #c62828;
+  background-color: #ffcdd2;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 2rem;
+}
+
+.summary {
+  background-color: #e8eaf6;
+  padding: 1.5rem;
+  border-radius: 4px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.source-documents {
+  margin-top: 1.5rem;
+}
+
+.document-card {
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  padding: 1.5rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.document-card h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.category-card {
+  background-color: #e8eaf6;
+  padding: 1.5rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.category-card h3 {
+  margin-top: 0;
+  color: #1a237e;
+}
+
+.category-card p strong {
+  font-weight: bold;
+}
+
+.category-card a {
+  color: #303f9f;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 0.2rem;
+}
+.category-card a:hover {
+  text-decoration: underline;
+}
+
+.divider {
+  border: 0;
+  height: 1px;
+  background-color: #e0e0e0;
+  margin: 3rem 0;
+}
+
+/* ★★★ フローティングボタン用のスタイルを追加 ★★★ */
+.back-to-top-floating-btn {
+  position: fixed; /* 画面に固定表示 */
+  bottom: 2rem;    /* 画面下から2remの位置 */
+  right: 2rem;     /* 画面右から2remの位置 */
+  
+  /* 以下はボタンのデザイン */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /* 円形にする */
+  background-color: #3949ab;
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s, transform 0.3s;
+  opacity: 0; /* 初期状態は非表示 */
+  transform: translateY(20px);
+}
+
+/* ボタンが表示される時のアニメーション */
+.back-to-top-floating-btn {
+  animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
