@@ -160,12 +160,12 @@ function App() {
       {error && <div className="error-message">{error}</div>}
 
       {/* 検索中のローディング表示 */}
-      {isSearching && <p>過去の事例を検索中...</p>}
+      {isSearching && <div className="loading-message"><p>過去の事例を検索中...</p></div>}
       {/* Kendraの結果（リスト）はすぐに表示 */}
       {sourceDocuments && sourceDocuments.length > 0 && (
         <div className="results">
           {/* 要約中はローディング表示 */}
-          {isSummarizing && <h2>AIによる要約を生成中...</h2>}
+          {isSummarizing && <div className="loading-message"><h2>AIによる要約を生成中...</h2></div>}
           
           {/* Bedrockの結果（要約）は準備ができ次第表示 */}
           {bedrockSummary && (

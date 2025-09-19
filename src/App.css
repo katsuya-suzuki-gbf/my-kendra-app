@@ -1,41 +1,60 @@
-body {
-  font-family: sans-serif;
-  background-color: #f4f4f9;
-  color: #333;
-  margin: 0;
-  padding: 2rem;
+/* --- 基本スタイル --- */
+:root {
+  --primary-color: #3949ab;
+  --primary-dark-color: #283593;
+  --primary-light-color: #e8eaf6;
+  --text-color: #333;
+  --background-color: #f4f4f9;
+  --white-color: #fff;
+  --border-color: #ddd;
 }
 
+body {
+  font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 1rem; /* スマホ用に余白を調整 */
+}
+
+/* --- 全体コンテナ --- */
 .container {
   max-width: 900px;
   margin: 0 auto;
-  background: #fff;
-  padding: 2rem;
+  background: var(--white-color);
+  padding: 1.5rem; /* スマホ用に余白を調整 */
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px
+ 10px rgba(0, 0, 0, 0.1);
 }
 
 h1, h2 {
-  color: #1a237e;
+  color: var(--primary-dark-color);
+  border-bottom: 2px solid var(--primary-light-color);
+  padding-bottom: 0.5rem;
 }
 
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* --- 検索フォーム --- */
 .search-form {
   display: flex;
+  flex-direction: column; /* スマホでは縦に並べる */
   gap: 1rem;
   margin-bottom: 2rem;
 }
 
-.search-input {
-  flex-grow: 2;
-}
-
-.user-input {
-  flex-grow: 1;
+.search-input, .user-input {
+  width: 100%;
+  box-sizing: border-box; /* paddingを含めて幅100%にする */
 }
 
 input[type="text"] {
   padding: 0.75rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   font-size: 1rem;
 }
@@ -43,12 +62,13 @@ input[type="text"] {
 button {
   padding: 0.75rem 1.5rem;
   border: none;
-  background-color: #3949ab;
+  background-color: var(--primary-color);
   color: white;
   border-radius: 4px;
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.2s;
+  -webkit-appearance: none; /* iOSでの角丸問題を解消 */
 }
 
 button:disabled {
@@ -57,9 +77,11 @@ button:disabled {
 }
 
 button:hover:not(:disabled) {
-  background-color: #283593;
+  background-color: var(--primary-dark-color);
 }
 
+
+/* --- メッセージエリア --- */
 .error-message {
   color: #c62828;
   background-color: #ffcdd2;
@@ -68,54 +90,45 @@ button:hover:not(:disabled) {
   margin-bottom: 2rem;
 }
 
-.summary {
-  background-color: #e8eaf6;
-  padding: 1.5rem;
-  border-radius: 4px;
-  line-height: 1.6;
-  white-space: pre-wrap;
+.loading-message {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+  color: #555;
 }
 
-.source-documents {
-  margin-top: 1.5rem;
+
+/* --- 結果表示エリア --- */
+.summary, .category-card, .document-card {
+  background-color: var(--primary-light-color);
+  padding: 1.5rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  line-height: 1.6;
 }
 
 .document-card {
   background-color: #f9f9f9;
-  border: 1px solid #eee;
-  padding: 1.5rem;
-  border-radius: 4px;
-  margin-bottom: 1rem;
+  border-left: 4px solid var(--primary-color);
 }
 
-.document-card h3 {
+.document-card h3, .category-card h3 {
   margin-top: 0;
-  color: #333;
+  color: var(--primary-dark-color);
 }
 
-.category-card {
-  background-color: #e8eaf6;
-  padding: 1.5rem;
-  border-radius: 4px;
-  margin-bottom: 1rem;
+p strong {
+  font-weight: 600;
+  color: #555;
 }
 
-.category-card h3 {
-  margin-top: 0;
-  color: #1a237e;
-}
-
-.category-card p strong {
-  font-weight: bold;
-}
-
-.category-card a {
+.category-card a, .summary a {
   color: #303f9f;
   text-decoration: none;
   font-weight: bold;
   margin: 0 0.2rem;
 }
-.category-card a:hover {
+.category-card a:hover, .summary a:hover {
   text-decoration: underline;
 }
 
@@ -126,17 +139,16 @@ button:hover:not(:disabled) {
   margin: 3rem 0;
 }
 
-/* ★★★ フローティングボタン用のスタイルを追加 ★★★ */
+
+/* --- フローティングボタン --- */
 .back-to-top-floating-btn {
-  position: fixed; /* 画面に固定表示 */
-  bottom: 2rem;    /* 画面下から2remの位置 */
-  right: 2rem;     /* 画面右から2remの位置 */
-  
-  /* 以下はボタンのデザイン */
+  position: fixed;
+  bottom: 1rem; /* スマホ用に調整 */
+  right: 1rem;  /* スマホ用に調整 */
   width: 50px;
   height: 50px;
-  border-radius: 50%; /* 円形にする */
-  background-color: #3949ab;
+  border-radius: 50%;
+  background-color: var(--primary-color);
   color: white;
   border: none;
   font-size: 1.5rem;
@@ -145,19 +157,34 @@ button:hover:not(:disabled) {
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: opacity 0.3s, transform 0.3s;
-  opacity: 0; /* 初期状態は非表示 */
-  transform: translateY(20px);
+  z-index: 1000;
 }
 
-/* ボタンが表示される時のアニメーション */
-.back-to-top-floating-btn {
-  animation: fadeIn 0.3s forwards;
-}
 
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+/* --- ★★★ レスポンシブ設定 (画面幅が768px以上の場合) ★★★ --- */
+@media (min-width: 768px) {
+  body {
+    padding: 2rem; /* PCでは余白を広く */
+  }
+
+  .container {
+    padding: 2rem; /* PCでは余白を広く */
+  }
+
+  .search-form {
+    flex-direction: row; /* PCでは横に並べる */
+  }
+
+  .search-input {
+    flex-grow: 2;
+  }
+
+  .user-input {
+    flex-grow: 1;
+  }
+  
+  .back-to-top-floating-btn {
+    bottom: 2rem;
+    right: 2rem;
   }
 }
