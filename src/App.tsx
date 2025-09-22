@@ -36,8 +36,8 @@ function App() {
   const [error, setError] = useState<string | null>(null);
 
   // C# APIのベースURL（ご自身の環境に合わせてください）
-  // const API_BASE_URL = 'https://localhost:7283';
-  const API_BASE_URL = 'https://cjdmuzpmsd.ap-northeast-1.awsapprunner.com';
+  const API_BASE_URL = 'https://localhost:7283';
+  // const API_BASE_URL = 'https://cjdmuzpmsd.ap-northeast-1.awsapprunner.com';
 
   const [showBackToTop, setShowBackToTop] = useState(false);
 
@@ -104,7 +104,10 @@ function App() {
 
       setIsSummarizing(true);
       try {
-        const response = await fetch(`${API_BASE_URL}/api/search/summarize`, {
+        const params = new URLSearchParams({ query });
+        if (user) params.append('user', user);
+
+        const response = await fetch(`${API_BASE_URL}/api/search/summarize?${params.toString()}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
